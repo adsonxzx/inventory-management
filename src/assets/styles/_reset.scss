@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  background: #fafafa !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+body, button, input {
+  color: #222;
+  font-size: 14px !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+button {
+  cursor: pointer;
+}

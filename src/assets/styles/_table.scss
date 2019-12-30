@@ -1,0 +1,42 @@
+// List Expenses
+.list-expenses {
+  position: relative;
+
+  // Tabela
+  > .table {
+    position: relative;
+    color: #707070;
+    margin: 0;
+
+    thead th {
+      border: none;
+      color: #26c3ff;
+
+      &:last-child {
+        text-align: center;
+      }
+    }
+
+    .actions {
+      justify-content: space-around;
+      text-align: center;
+
+      .icon {
+        padding: 5px;
+        cursor: pointer;
+      }
+
+      .icon:first-child {
+        margin-right: 20px;
+      }
+
+      .fa-trash:hover {
+        color: red;
+      }
+
+      .fa-pen:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
