@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { Component } from 'react';
-import { Formik } from 'formik';
 
 export default class Fornecedor extends Component {
   constructor(props) {
@@ -22,8 +20,8 @@ export default class Fornecedor extends Component {
       <>
         {/* Title */}
         <div className="title-page">
-          <h2>Funcionário</h2>
-          <span>Cadastro e Edição de Funcionários</span>
+          <h2>Empresa</h2>
+          <span>Cadastro e Edição de Empresas</span>
         </div>
 
         {/* Button Produto */}
@@ -57,7 +55,7 @@ export default class Fornecedor extends Component {
                 <tr>
                   <th scope="col">Código</th>
                   <th scope="col">Nome</th>
-                  <th scope="col">CPF</th>
+                  <th scope="col">CNPJ</th>
                   <th scope="col">Cidade</th>
                   <th scope="col">Ações</th>
                 </tr>
@@ -65,8 +63,8 @@ export default class Fornecedor extends Component {
               <tbody>
                 <tr>
                   <td>0</td>
-                  <td>Funcionario 0</td>
-                  <td>54054564654</td>
+                  <td>Empresa 0</td>
+                  <td>54054564654/5444-00</td>
                   <td>Recife</td>
                   <th scope="row">
                     {/* actions */}
@@ -78,8 +76,8 @@ export default class Fornecedor extends Component {
                 </tr>
                 <tr>
                   <td>1</td>
-                  <td>Funcionario 1</td>
-                  <td>54054564654</td>
+                  <td>Empresa 1</td>
+                  <td>54054564654/5444-00</td>
                   <td>Recife</td>
                   <th scope="row">
                     {/* actions */}
@@ -91,8 +89,8 @@ export default class Fornecedor extends Component {
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>Funcionario 2</td>
-                  <td>540545646540</td>
+                  <td>Empresa 2</td>
+                  <td>54054564654/5444-00</td>
                   <td>Recife</td>
                   <th scope="row">
                     {/* actions */}

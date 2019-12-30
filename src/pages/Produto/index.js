@@ -20,8 +20,30 @@ export default class Produto extends Component {
       useFormProduct: false,
       products: [],
       tabActive: 'produto',
+      search: '',
     };
   }
+
+  componentDidMount() {
+    const products = JSON.parse(localStorage.getItem('products'));
+    if (products) {
+      this.setState({ products });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { products } = this.state;
+    if (prevState.products !== products) {
+      localStorage.setItem('products', JSON.stringify(products));
+    }
+  }
+
+  handleRemove = index => {
+    const { products } = this.state;
+    products.splice(index, 1);
+    this.setState({ products });
+    localStorage.setItem('products', JSON.stringify(products));
+  };
 
   handleForm = () => {
     const { useFormProduct } = this.state;
@@ -42,9 +64,13 @@ export default class Produto extends Component {
     this.setState({ tabActive });
   };
 
-  render() {
-    const { useFormProduct, products, tabActive } = this.state;
+  handleSearch = e => {
+    const { value } = e.target;
+    this.setState({ search: value });
+  };
 
+  render() {
+    const { useFormProduct, products, tabActive, search } = this.state;
     return (
       <>
         {/* Title */}
@@ -104,15 +130,29 @@ export default class Produto extends Component {
           />
         ) : null}
 
-        {/* Button Categoria */}
+        {/* Button Produto */}
         {!useFormProduct ? (
-          <button
-            type="button"
-            className="button-action -green"
-            onClick={this.handleForm}
-          >
-            <i className="fas fa-plus" /> Novo
-          </button>
+          <div className="section-options">
+            <button
+              type="button"
+              className="button-action -green"
+              onClick={this.handleForm}
+            >
+              <i className="fas fa-plus" /> Novo
+            </button>
+
+            <div className="table-search">
+              <label htmlFor="tableSearch">Buscar</label>
+              <input
+                onChange={e => this.handleSearch(e)}
+                className="form-control"
+                id="tableSearch"
+                type="text"
+                value={search}
+                placeholder="buscar algo"
+              />
+            </div>
+          </div>
         ) : null}
 
         {/* Tabela Produto */}
@@ -132,18 +172,21 @@ export default class Produto extends Component {
                 </thead>
                 <tbody>
                   {products.length > 0
-                    ? products.map(product => (
+                    ? products.map((product, index) => (
                         <tr key={product.codigo}>
                           <td>{product.codigo}</td>
                           <td>{product.nome}</td>
-                          <td>{product.preco}</td>
+                          <td>{product.venda}</td>
                           <td>{product.marca}</td>
-                          <td>{product.lucro}</td>
+                          <td>{product.categoria}</td>
                           <th scope="row">
                             {/* actions */}
                             <div className="actions">
                               <i className="icon fas fa-pen" />
-                              <i className="icon fas fa-trash" />
+                              <i
+                                className="icon fas fa-trash"
+                                onClick={() => this.handleRemove(index)}
+                              />
                             </div>
                           </th>
                         </tr>

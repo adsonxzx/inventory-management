@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import LineChart from '../../components/Linechart';
+import PieChart from '../../components/Piechart';
 
 export default class Home extends Component {
   constructor(props) {
@@ -83,7 +85,17 @@ export default class Home extends Component {
             </div>
           </div>
         </section>
+
         <h3 className="title-section">Visão Geral</h3>
+        <section className="row">
+          <div className="col-7">
+            <LineChart />
+          </div>
+
+          <div className="col-5">
+            <PieChart />
+          </div>
+        </section>
       </>
     );
   }

@@ -15,6 +15,7 @@ export default class Fornecedor extends Component {
     this.state = {
       useFormProduct: false,
       fornecedores: [],
+      search: '',
     };
   }
 
@@ -53,8 +54,13 @@ export default class Fornecedor extends Component {
     localStorage.setItem('fornecedores', JSON.stringify(fornecedores));
   };
 
+  handleSearch = e => {
+    const { value } = e.target;
+    this.setState({ search: value });
+  };
+
   render() {
-    const { fornecedores, useFormProduct } = this.state;
+    const { fornecedores, useFormProduct, search } = this.state;
 
     return (
       <>
@@ -77,20 +83,34 @@ export default class Fornecedor extends Component {
 
         {/* Button Produto */}
         {!useFormProduct ? (
-          <button
-            type="button"
-            className="button-action -green"
-            onClick={this.handleForm}
-          >
-            <i className="fas fa-plus" /> Novo
-          </button>
+          <div className="section-options">
+            <button
+              type="button"
+              className="button-action -green"
+              onClick={this.handleForm}
+            >
+              <i className="fas fa-plus" /> Novo
+            </button>
+
+            <div className="table-search">
+              <label htmlFor="tableSearch">Buscar</label>
+              <input
+                onChange={e => this.handleSearch(e)}
+                className="form-control"
+                id="tableSearch"
+                type="text"
+                value={search}
+                placeholder="buscar algo"
+              />
+            </div>
+          </div>
         ) : null}
 
         {/* Table */}
         {!useFormProduct ? (
           <div className="box-container">
             <div className="list-expenses">
-              <table className="table">
+              <table className="table" id="myTable">
                 <thead>
                   <tr>
                     <th scope="col">Código</th>
