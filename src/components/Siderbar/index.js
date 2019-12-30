@@ -51,16 +51,16 @@ export default function Siderbar() {
           className={pathname === '/fornecedores' ? 'active' : null}
         >
           <Link to="/funcionarios">
-            <i class="fas fa-people-carry" />
+            <i className="fas fa-people-carry" />
             Funcionário
           </Link>
         </li>
         <li
           onClick={e => tabs(e)}
-          className={pathname === '/' ? 'active' : null}
+          className={pathname === '/empresas' ? 'active' : null}
         >
           <Link to="/empresas">
-          <i class="fas fa-city" />
+            <i className="fas fa-city" />
             Empresa
           </Link>
         </li>
